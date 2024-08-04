@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
+
+import '../services/weather_service.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -17,9 +20,19 @@ class SearchScreen extends StatelessWidget {
           child: SizedBox(
             height: 200,
             child: TextField(
-              onChanged: (value){
-                print(value);/// to print input of TextField
-                log(value);/// to print logs
+              onChanged: (value) {
+                print(value);
+
+                /// to print input of TextField
+                log(value);
+
+                /// to print logs
+              },
+              onSubmitted: (cityName) async {
+                WeatherModel weatherModel = await WeatherService()
+                    .getCurrentWeather(cityName: cityName);
+                Navigator.pop(context);
+                log(weatherModel.cityName);
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(

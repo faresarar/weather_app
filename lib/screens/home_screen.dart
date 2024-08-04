@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/no_weather_body.dart';
+import '../widgets/weather_info_body.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const NoWeatherBody(),
+      body: const WeatherInfoBody(),
     );
   }
 }
