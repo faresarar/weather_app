@@ -31,8 +31,9 @@ class SearchScreen extends StatelessWidget {
               onSubmitted: (cityName) async {
                 WeatherModel weatherModel = await WeatherService()
                     .getCurrentWeather(cityName: cityName);
-                Navigator.pop(context);
                 log(weatherModel.cityName);
+
+                Navigator.pop(context);
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
@@ -62,3 +63,5 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
+
+WeatherModel? weatherModel;

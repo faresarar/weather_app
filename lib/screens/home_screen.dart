@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weather App"),
@@ -27,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const WeatherInfoBody(),
+      body:  weatherModel == null ? const NoWeatherBody() : const WeatherInfoBody(),
     );
   }
 }
