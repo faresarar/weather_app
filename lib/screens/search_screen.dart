@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -15,6 +17,10 @@ class SearchScreen extends StatelessWidget {
           child: SizedBox(
             height: 200,
             child: TextField(
+              onChanged: (value){
+                print(value);/// to print input of TextField
+                log(value);/// to print logs
+              },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 32,
