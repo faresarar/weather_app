@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
@@ -19,14 +17,6 @@ class SearchScreen extends StatelessWidget {
           child: SizedBox(
             height: 200,
             child: TextField(
-              onChanged: (value) {
-                print(value);
-
-                /// to print input of TextField
-                log(value);
-
-                /// to print logs
-              },
               onSubmitted: (cityName) async {
                 var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
                 getWeatherCubit.getWeather(cityName: cityName);

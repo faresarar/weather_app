@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'cubits/get_weather_cubit/get_weather_states.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -16,22 +17,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child:  Builder(
-        builder: (context) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Weather App',
-            theme: ThemeData(
-              primarySwatch: getThemeColor(BlocProvider.of<GetWeatherCubit>(context)
-                  .weatherModel
-                  ?.weatherCondition),
-            ),
-            home: const HomeScreen(),
-          );
-        }
-      )
+      child: Builder(builder: (context) {
+        return BlocBuilder<GetWeatherCubit, WeatherState>(
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Weather App',
+              theme: ThemeData(
+                primarySwatch: getThemeColor(
+                  BlocProvider.of<GetWeatherCubit>(context)
+                      .weatherModel
+                      ?.weatherCondition,
+                ),
+              ),
+              home: const HomeScreen(),
+            );
+          },
+        );
+      }),
     );
   }
+
   MaterialColor getThemeColor(String? condition) {
     if (condition == null) {
       return Colors.blue;
@@ -71,9 +77,7 @@ class MyApp extends StatelessWidget {
         return Colors.grey;
     }
   }
-
 }
-
 
 /// create states
 /// create cubit
