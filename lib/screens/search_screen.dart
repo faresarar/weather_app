@@ -26,8 +26,6 @@ class SearchScreen extends StatelessWidget {
                 /// to print logs
               },
               onSubmitted: (cityName) async {
-
-
                 Navigator.pop(context);
               },
               decoration: InputDecoration(
