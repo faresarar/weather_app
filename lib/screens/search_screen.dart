@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -26,6 +28,8 @@ class SearchScreen extends StatelessWidget {
                 /// to print logs
               },
               onSubmitted: (cityName) async {
+                var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
+                getWeatherCubit.getWeather(cityName: cityName);
                 Navigator.pop(context);
               },
               decoration: InputDecoration(
