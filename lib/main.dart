@@ -24,4 +24,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+/// create states
+/// create cubit
+/// create function
+/// provide cubit
+/// integrate cubit
+/// trigger cubit
