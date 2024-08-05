@@ -16,53 +16,64 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Weather App',
-        theme: getThemeColor(),
-        home: const HomeScreen(),
-      ),
+      child:  Builder(
+        builder: (context) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Weather App',
+            theme: ThemeData(
+              primarySwatch: getThemeColor(BlocProvider.of<GetWeatherCubit>(context)
+                  .weatherModel
+                  ?.weatherCondition),
+            ),
+            home: const HomeScreen(),
+          );
+        }
+      )
     );
   }
-  MaterialColor getThemeColor(String condition){
-    switch(condition){
+  MaterialColor getThemeColor(String? condition) {
+    if (condition == null) {
+      return Colors.blue;
+    }
+    switch (condition) {
       case "Sunny":
       case "clear":
       case "Partly cloudy":
-      case"Cloudy":
-      case"Overcast":
-        return Colors.blueGrey ;
-      case"Mist":
-      case"Fog":
-      case"Freezing fog":
+      case "Cloudy":
+      case "Overcast":
         return Colors.blueGrey;
-      case"Patchy rain possible":
-      case"Patchy light rain":
-      case"Light rain ":
-      case"Moderate rain at times":
-      case"Moderate rain":
-      case"Heavy rain at times":
-      case"Heavy rain":
-      case"Light rain shower":
-      case"Moderate or Heavy rain shower":
-      case"Torrential rain shower":
-        return Colors.lightBlue ;
-      case"Patchy snow possible":
-      case"Patchy light snow":
-      case"Light snow":
-      case"Patchy moderate snow":
-      case"Moderate snow":
-      case"Heavy snow":
-      case"Light snow showers":
-      case"Moderate or heavy snow showers":
+      case "Mist":
+      case "Fog":
+      case "Freezing fog":
+        return Colors.blueGrey;
+      case "Patchy rain possible":
+      case "Patchy light rain":
+      case "Light rain ":
+      case "Moderate rain at times":
+      case "Moderate rain":
+      case "Heavy rain at times":
+      case "Heavy rain":
+      case "Light rain shower":
+      case "Moderate or Heavy rain shower":
+      case "Torrential rain shower":
         return Colors.lightBlue;
-        default:
-          return Colors.grey;
-
-
+      case "Patchy snow possible":
+      case "Patchy light snow":
+      case "Light snow":
+      case "Patchy moderate snow":
+      case "Moderate snow":
+      case "Heavy snow":
+      case "Light snow showers":
+      case "Moderate or heavy snow showers":
+        return Colors.lightBlue;
+      default:
+        return Colors.grey;
     }
   }
+
 }
+
 
 /// create states
 /// create cubit

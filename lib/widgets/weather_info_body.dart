@@ -9,7 +9,7 @@ class WeatherInfoBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WeatherModel weatherModel =
-        BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+        BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
     weatherModel.image!.contains("https");
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
