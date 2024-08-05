@@ -19,13 +19,48 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Weather App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: getThemeColor(),
         home: const HomeScreen(),
       ),
     );
+  }
+  MaterialColor getThemeColor(String condition){
+    switch(condition){
+      case "Sunny":
+      case "clear":
+      case "Partly cloudy":
+      case"Cloudy":
+      case"Overcast":
+        return Colors.blueGrey ;
+      case"Mist":
+      case"Fog":
+      case"Freezing fog":
+        return Colors.blueGrey;
+      case"Patchy rain possible":
+      case"Patchy light rain":
+      case"Light rain ":
+      case"Moderate rain at times":
+      case"Moderate rain":
+      case"Heavy rain at times":
+      case"Heavy rain":
+      case"Light rain shower":
+      case"Moderate or Heavy rain shower":
+      case"Torrential rain shower":
+        return Colors.lightBlue ;
+      case"Patchy snow possible":
+      case"Patchy light snow":
+      case"Light snow":
+      case"Patchy moderate snow":
+      case"Moderate snow":
+      case"Heavy snow":
+      case"Light snow showers":
+      case"Moderate or heavy snow showers":
+        return Colors.lightBlue;
+        default:
+          return Colors.grey;
+
+
+    }
   }
 }
 
