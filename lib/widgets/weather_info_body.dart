@@ -17,9 +17,9 @@ class WeatherInfoBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomText(weatherModel: weatherModel),
-          const Text(
-            'updated at 23:46',
-            style: TextStyle(
+          Text(
+            'updated at ${weatherModel.date.hour}:${weatherModel.date.minute}',
+            style: const TextStyle(
               fontSize: 24,
             ),
           ),
@@ -48,7 +48,9 @@ class WeatherInfoBody extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Mintemp :${weatherModel.minTemp.round()}",/// تقريب الى اقرب رقم صحيح
+                    "Mintemp :${weatherModel.minTemp.round()}",
+
+                    /// تقريب الى اقرب رقم صحيح
                     style: const TextStyle(
                       fontSize: 16,
                     ),
@@ -92,3 +94,7 @@ class CustomText extends StatelessWidget {
     );
   }
 }
+
+/*DateTime stringToDateTime(String time) {
+  return DateTime.parse(time);
+}*/
