@@ -1,9 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_model.dart';
-
-import '../services/weather_service.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -29,9 +26,7 @@ class SearchScreen extends StatelessWidget {
                 /// to print logs
               },
               onSubmitted: (cityName) async {
-                WeatherModel weatherModel = await WeatherService()
-                    .getCurrentWeather(cityName: cityName);
-                log(weatherModel.cityName);
+
 
                 Navigator.pop(context);
               },
@@ -63,5 +58,3 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
-
-WeatherModel? weatherModel;

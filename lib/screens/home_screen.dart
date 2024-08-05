@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/no_weather_body.dart';
-import '../widgets/weather_info_body.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,7 +8,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weather App"),
@@ -28,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body:  weatherModel == null ? const NoWeatherBody() : const WeatherInfoBody(),
+      body: const NoWeatherBody(),
     );
   }
 }
